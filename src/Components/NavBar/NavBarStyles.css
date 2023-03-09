@@ -1,35 +1,35 @@
-.navbar{
-   background: linear-gradient(to left,#239B56 ,#2C3E50);
+.navbar {
+  background: linear-gradient(to left, #239b56, #2c3e50);
 }
 
-.nav-link p{
-   color: white;
+.nav-link p {
+  color: white;
 }
 
-.navbardesplegable a{ 
-   color: white !important;
-   background: linear-gradient(to left, black,#566573);
+.navbardesplegable a {
+  color: white !important;
+  background: linear-gradient(to left, black, #566573);
 }
 
-.dropdown-menu.show{ 
-   background: linear-gradient(to left,#239B56 ,#2C3E50);
+.dropdown-menu.show {
+  background: linear-gradient(to left, #239b56, #2c3e50);
 }
 
-.navbar-toggler.collapsed{
-   border-color: white;
+.navbar-toggler.collapsed {
+  border-color: white;
 }
 
-.dropdown-toggle.nav-link{
-   border-radius: 5vh;
+.dropdown-toggle.nav-link {
+  border-radius: 5vh;
 }
 
-.dropdown-item{
-   border-radius: 5vh;
+.dropdown-item {
+  border-radius: 5vh;
 }
 
-.imgnavbar{
-   width: 15vh;
-   height: 15vh;
-   margin-right: 5vh;
-   border-radius: 35px;
+.imgnavbar {
+  width: 15vh;
+  height: 15vh;
+  margin-right: 5vh;
+  border-radius: 35px;
 }
