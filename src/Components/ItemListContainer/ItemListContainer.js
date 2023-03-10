@@ -1,12 +1,26 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import Container from "react-bootstrap/Container";
 import "./ItemListContainer.css";
+import ItemList from "../ItemList/ItemList";
+import { getProducts } from "../../mock/FakeApi";
 
-function ItemListContainer({ greeting }) {
+
+function ItemListContainer() {
+  const [listaProductos, setListaProductos] = useState([]);
+
+  useEffect(() => {
+    getProducts()
+      .then((res) => setListaProductos(res))
+      .catch((error) => console.log(error));
+  }, []);
+
   return (
     <Container fluid>
-      <h1 className="TextoList">{greeting}</h1>
+    <ItemList
+    productos={listaProductos}
+    />
     </Container>
   );
 }
+
 export default ItemListContainer;

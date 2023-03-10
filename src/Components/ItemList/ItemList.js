@@ -1,40 +1,25 @@
-import React, { useState } from "react";
-import Producto from "../Item/Item.js";
+import React from "react";
+import { Container } from "react-bootstrap";
+import Item from "../Item/Item.js";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
-const Productos = () => {
-  const [productos, setProductos] = useState([
-    {
-      id: 1,
-      Categoria: "Foco",
-      Tipo: "A60",
-    },
-    {
-      id: 2,
-      Categoria: "Smart",
-      Tipo: "Foco9W",
-    },
-    {
-      id: 3,
-      Categoria: "Artefacto",
-      Tipo: "PlafonLed",
-    },
-  ]);
-
+const ItemList = ({ productos }) => {
   return (
     <div>
       {productos.map((producto) => {
         return (
-          <div>
-            <Producto
-            key={productos.id}
-            Categoria={productos.Categoria}
-            Tipo={productos.Tipo}
-            />
-          </div>
+          <Container>
+            <Row>
+              <Col>
+                <Item key={producto.id} producto={producto} />
+              </Col>
+            </Row>
+          </Container>
         );
       })}
     </div>
   );
 };
 
-export default Productos;
+export default ItemList;

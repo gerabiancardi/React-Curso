@@ -1,13 +1,13 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const Producto= (props)=> {
+const Item= ({producto})=> {
   return (
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Img variant="top" src={producto.img}/>
       <Card.Body>
-        <Card.Title><h3>{props.Tipo}</h3></Card.Title>
-        <Card.Text><p>{props.Categoria}</p>
+        <Card.Title><h3>{producto.name}</h3></Card.Title>
+        <Card.Text><p>{producto.category}</p>
         </Card.Text>
         <Button variant="primary">Go somewhere</Button>
       </Card.Body>
@@ -15,4 +15,4 @@ const Producto= (props)=> {
   );
 }
 
-export default Producto;
+export default Item;
