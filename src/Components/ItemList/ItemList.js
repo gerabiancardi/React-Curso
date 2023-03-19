@@ -9,10 +9,10 @@ const ItemList = ({ productos }) => {
     <div>
       {productos.map((producto) => {
         return (
-          <Container>
+          <Container key={producto.id}>
             <Row>
               <Col>
-                <Item key={producto.id} producto={producto} />
+                <Item  producto={producto} />
               </Col>
             </Row>
           </Container>

@@ -3,28 +3,31 @@ import Container from "react-bootstrap/Container";
 import "./ItemListContainer.css";
 import ItemList from "../ItemList/ItemList";
 import { getProducts } from "../../mock/FakeApi";
-import ItemCount from "../ItemCount/ItemCount";
+import { useParams } from "react-router-dom";
 
 
 function ItemListContainer() {
   const [listaProductos, setListaProductos] = useState([]);
-
+  const {categoryId}=useParams()
   useEffect(() => {
     getProducts()
-      .then((res) => setListaProductos(res))
+      .then((res) => {
+        if(categoryId){
+          setListaProductos(res.filter((item)=> item.category === categoryId))
+        }else{
+          setListaProductos(res)
+        }
+      })
       .catch((error) => console.log(error));
-  }, []);
+  }, [categoryId]);
 
-const onAdd = (quantity) =>{
-  console.log(`Tenes ${quantity} productos`);
-}
+
 
   return (
     <Container fluid>
     <ItemList
     productos={listaProductos}
     />
-    <ItemCount initial={0} stock= {5} onAdd={onAdd}/>
     </Container>
   );
 }
