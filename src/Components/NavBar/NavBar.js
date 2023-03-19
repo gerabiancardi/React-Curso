@@ -18,14 +18,14 @@ function NavBar() {
             <Nav.Link as={NavLink} to="/" >
               <p>Home</p>
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/category/nuevos" >
-              <p>Nuevos</p>
+            <Nav.Link as={NavLink} to="/category/focos" >
+              <p>Focos</p>
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/category/oferta">
-              <p>Ofertas</p>
+            <Nav.Link as={NavLink} to="/category/smart">
+              <p>Smart</p>
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/category/vendidos">
-              <p>Mas Vendidos</p>
+            <Nav.Link as={NavLink} to="/category/artefactos">
+              <p>Artefactos</p>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
