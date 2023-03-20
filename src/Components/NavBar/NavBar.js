@@ -11,14 +11,16 @@ function NavBar() {
   return (
     <Navbar className="navbar" expand="lg">
       <Container>
-        <Image src={logo} alt="logo" className="imgnavbar img-fluid" />
+        <Nav.Link as={NavLink} to="/">
+          <Image src={logo} alt="logo" className="imgnavbar img-fluid" />
+        </Nav.Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={NavLink} to="/" >
+            <Nav.Link as={NavLink} to="/">
               <p>Home</p>
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/category/focos" >
+            <Nav.Link as={NavLink} to="/category/focos">
               <p>Focos</p>
             </Nav.Link>
             <Nav.Link as={NavLink} to="/category/smart">
