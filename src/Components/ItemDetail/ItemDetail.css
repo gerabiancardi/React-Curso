@@ -1,0 +1,16 @@
+.Text-Details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+}
+
+.Item_Details {
+  display: "flex";
+  justify-content: "center";
+  flex-direction: "column";
+  align-items: "center";
+  margin-top: 10vh;
+  border: 1px solid #239b56;
+  border-radius: 20px;
+}
