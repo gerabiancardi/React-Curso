@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import logo from "../assets/imagenes/logo.jpeg";
+import logo from "../../assets/imagenes/logo.jpg";
 import { Image } from "react-bootstrap";
 import "./QuienesSomos.css";
 

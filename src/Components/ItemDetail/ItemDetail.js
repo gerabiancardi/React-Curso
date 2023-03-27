@@ -3,6 +3,7 @@ import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
 import "./ItemDetail.css";
 import { Col, Container, Row } from "react-bootstrap";
+import { AddBtn } from "../AddBtn/AddBtn";
 
 const ItemDetail = ({ detalleProducto }) => {
   const { name, description, price, stock, img } = detalleProducto;
@@ -37,6 +38,7 @@ const ItemDetail = ({ detalleProducto }) => {
         </Col>
       </Row>
       <ItemCount initial={1} stock={stock} onAdd={onAdd} />
+      <AddBtn></AddBtn>
       <Link className="btn btn-dark" to={"/"} style={{ marginBlock: 15 }}>
         Volver a Home
       </Link>

@@ -3,7 +3,7 @@ import Image from "react-bootstrap/Image";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "./NavBarStyles.css";
-import logo from "../assets/imagenes/logo.jpeg";
+import logo from "../../assets/imagenes/logo.jpg" ;
 import CartWidget from "../CartWidget/CartWidget";
 import { NavLink } from "react-router-dom";
 
