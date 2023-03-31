@@ -1,28 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { getProducts } from "../../mock/FakeApi";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
+import {db} from "../../firebase/Firebase"
+import { collection, getDocs} from 'firebase/firestore'
 
 const ItemDetailContainer = () => {
-  const [detalleProducto, setDetalleProducto] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [detalleProducto, setDetalleProducto] = useState([]);
   const { id } = useParams();
 
+
   useEffect(() => {
-    getProducts()
-      .then((res) => setDetalleProducto(res.find((item) => item.id === id)))
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
-  }, [id]);
+    const getProducts = async ()=>{
+      try{
+          const querySnapshot= await getDocs (collection (db, "Items"))
+          const docs= []
+          querySnapshot.forEach((doc)=>{
+              docs.push({...doc.data(), id:doc.id})
+          })
+            setDetalleProducto(docs.filter((doc) => doc.id === id))
+      }catch(error){
+          console.log(error)
+      }
+  }
+  
+  getProducts()
+  
+  },[detalleProducto])
 
   return (
     <Container>
-      {loading ? (
-        <h2>Cargando</h2>
-      ) : (
         <ItemDetail detalleProducto={detalleProducto} />
-      )}
     </Container>
   );
 };

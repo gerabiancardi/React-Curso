@@ -29,9 +29,6 @@ function NavBar() {
             <Nav.Link as={NavLink} to="/category/artefactos">
               <p>Artefactos</p>
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/quienessomos">
-              <p>Quienes Somos</p>
-            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <CartWidget />

@@ -2,24 +2,39 @@ import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import "./ItemListContainer.css";
 import ItemList from "../ItemList/ItemList";
-import { getProducts } from "../../mock/FakeApi";
 import { useParams } from "react-router-dom";
+import {db} from "../../firebase/Firebase"
+import { collection, getDocs} from 'firebase/firestore'
+
 
 function ItemListContainer() {
   const [listaProductos, setListaProductos] = useState([]);
   const { categoryId } = useParams();
+ 
+ 
   useEffect(() => {
-    getProducts()
-      .then((res) => {
-        if (categoryId) {
-          setListaProductos(res.filter((item) => item.category === categoryId));
-        } else {
-          setListaProductos(res);
-        }
-      })
-      .catch((error) => console.log(error));
-  }, [categoryId]);
-
+    const getProducts = async ()=>{
+      try{
+          const querySnapshot= await getDocs (collection (db, "Items"))
+          const docs= []
+          querySnapshot.forEach((doc)=>{
+              docs.push({...doc.data(), id:doc.id})
+          })
+          if(categoryId){
+            setListaProductos(docs.filter((doc) => doc.category === categoryId))
+          }else{
+            setListaProductos(docs);
+          }
+          
+      }catch(error){
+          console.log(error)
+      }
+  }
+  
+  getProducts()
+  
+  },[listaProductos])
+  
   return (
     <Container>
       <ItemList productos={listaProductos} />
