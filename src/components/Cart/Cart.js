@@ -1,30 +1,31 @@
-import React from 'react'
-import { useCartContext } from '../../context/CartContext';
-import { NavLink } from "react-router-dom";
-import ItemCart from '../ItemCart/ItemCart';
+import React from "react";
+import { useCartContext } from "../../context/CartContext";
+import { Link, NavLink } from "react-router-dom";
+import ItemCart from "../ItemCart/ItemCart";
 
 function Cart() {
-  const {cart, totalPrice, removeProduct} = useCartContext();
+  const { cart, totalPrice, removeProduct } = useCartContext();
 
- 
-
-  if (cart.length ===0){
-    return(
+  if (cart.length === 0) {
+    return (
       <>
-      <p>No hay elementos en el carrito</p>
-      <NavLink to='/'>Hacer compra</NavLink>
+        <p>No hay elementos en el carrito</p>
+        <NavLink to="/">Hacer compra</NavLink>
       </>
     );
   }
 
   return (
     <>
-    {cart.map(item =><ItemCart key={item.id} product={item} removeProduct={removeProduct}/>)
-    }
-    <p> total:$ {totalPrice()} </p>
-    <button>Generar orden de compra</button>
+      {cart.map((item) => (
+        <ItemCart key={item.id} product={item} removeProduct={removeProduct} />
+      ))}
+      <p> total:$ {totalPrice()} </p>
+      <Link to="/checkout">
+        <button>Generar orden de compra</button>
+      </Link>
     </>
-  )
+  );
 }
 
-export default Cart
+export default Cart;

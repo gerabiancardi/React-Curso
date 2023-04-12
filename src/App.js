@@ -6,6 +6,7 @@ import ErrorPage from "./components/Error/ErrorPage";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import CartProvider from "../src/context/CartContext";
 import Cart from "../src/components/Cart/Cart"
+import Checkout from './components/Checkout/Checkout'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route exact path="/item/:id" element={<ItemDetailContainer />} />
             <Route path="*" element={<ErrorPage />} />
             <Route path='/cart' element={<Cart/>}/>
+            <Route path='/checkout' element={<Checkout/>}/>
           </Routes>
           </CartProvider>
         </BrowserRouter>
