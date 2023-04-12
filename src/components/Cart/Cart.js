@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 import ItemCart from '../ItemCart/ItemCart';
 
 function Cart() {
-  const {cart, totalPrice} = useCartContext();
+  const {cart, totalPrice, removeProduct} = useCartContext();
+
+ 
 
   if (cart.length ===0){
     return(
@@ -17,7 +19,7 @@ function Cart() {
 
   return (
     <>
-    {cart.map(Item =><ItemCart key={Item.id} product={Item}/>)
+    {cart.map(item =><ItemCart key={item.id} product={item} removeProduct={removeProduct}/>)
     }
     <p> total:$ {totalPrice()} </p>
     <button>Generar orden de compra</button>
