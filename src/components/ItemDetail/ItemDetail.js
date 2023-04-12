@@ -3,15 +3,19 @@ import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
 import "./ItemDetail.css";
 import { Col, Container, Row } from "react-bootstrap";
-import { AddBtn } from "../AddBtn/AddBtn";
+import { useState } from "react";
+import { useCartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ detalleProducto }) => {
   const { name, description, price, stock, img } = detalleProducto;
 
-  const onAdd = (quantity) => {
-    console.log(`Tenes ${quantity} productos`);
-  };
-
+  const[goToCart,setGoToCart]= useState(false);
+  const {addProduct} = useCartContext();
+  
+  const onAdd =(quantity)=>{
+     setGoToCart(true);
+     addProduct(detalleProducto,quantity);
+   }
   return (
     <Container className="Item_Details">
       <Row>
@@ -37,8 +41,7 @@ const ItemDetail = ({ detalleProducto }) => {
           <h3>${price}</h3>
         </Col>
       </Row>
-      <ItemCount initial={1} stock={stock} onAdd={onAdd} />
-      <AddBtn></AddBtn>
+      {goToCart ? <Link className="btn btn-dark" to='/cart'>Terminar compra</Link>:<ItemCount initial={1} stock={stock} onAdd={onAdd} />}
       <Link className="btn btn-dark" to={"/"} style={{ marginBlock: 15 }}>
         Volver a Home
       </Link>

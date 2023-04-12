@@ -4,13 +4,15 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ErrorPage from "./components/Error/ErrorPage";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
-import { CartProvider } from "./context/CartContex";
+import CartProvider from "../src/context/CartContext";
+import Cart from "../src/components/Cart/Cart"
 
 function App() {
   return (
     <div className="App">
-      <CartProvider>
+      
         <BrowserRouter>
+        <CartProvider>
           <NavBar />
           <Routes>
             <Route exact path="/" element={<ItemListContainer />} />
@@ -21,9 +23,11 @@ function App() {
             />
             <Route exact path="/item/:id" element={<ItemDetailContainer />} />
             <Route path="*" element={<ErrorPage />} />
+            <Route path='/cart' element={<Cart/>}/>
           </Routes>
+          </CartProvider>
         </BrowserRouter>
-      </CartProvider>
+      
     </div>
   );
 }

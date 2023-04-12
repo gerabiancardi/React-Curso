@@ -1,17 +1,14 @@
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import "./CartWidgetNumber.css";
-import { useContext } from "react"; 
-import { CartContex } from "../../context/CartContex";
-
-
+import { useCartContext } from "../../context/CartContext";
 
 const CartWidget = () => {
- const {items}= useContext(CartContex)
+  const { totalProducts } = useCartContext();
   return (
     <div>
       <FaShoppingCart size={"2rem"} color={"white"} />
-      <span className="CartWidgetNumber">{items}</span>
+      <span className="CartWidgetNumber">{totalProducts() || ""}</span>
     </div>
   );
 };

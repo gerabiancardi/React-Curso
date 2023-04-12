@@ -5,10 +5,16 @@ import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
 import { db } from "../../firebase/Firebase";
 import { collection, getDocs } from "firebase/firestore";
+import Loader from "../Loader/Loader";
 
 function ItemListContainer() {
   const [listaProductos, setListaProductos] = useState([]);
   const { categoryId } = useParams();
+  const [load, setLoad] = useState(true);
+
+  const changeLoad = () => {
+    setLoad(false);
+  };
 
   useEffect(() => {
     const getProducts = async () => {
@@ -26,6 +32,7 @@ function ItemListContainer() {
       } catch (error) {
         console.log(error);
       }
+      changeLoad();
     };
 
     getProducts();
@@ -33,7 +40,7 @@ function ItemListContainer() {
 
   return (
     <Container>
-      <ItemList productos={listaProductos} />
+      {load ? <Loader /> : <ItemList productos={listaProductos} />}
     </Container>
   );
 }
