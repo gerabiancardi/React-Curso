@@ -17,7 +17,7 @@ function Cart() {
 
   return (
     <>
-    {cart.map(product =><ItemCart key={product.id} product={product}/>)
+    {cart.map(Item =><ItemCart key={Item.id} product={Item}/>)
     }
     <p> total:$ {totalPrice()} </p>
     <button>Generar orden de compra</button>

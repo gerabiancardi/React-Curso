@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import Item from "../components/Item/Item";
 
 const CartContext = React.createContext('');
 export const useCartContext = () => useContext(CartContext);
@@ -19,22 +20,22 @@ function CartProvider({ children }) {
   const clearCart = () => setCart([]);
 
   const isInCart = (id) =>
-    cart.find((product) => product.id === id) ? true : false;
+    cart.find((Item) => Item.id === id) ? true : false;
 
   const removeProduct = (id) =>
-    setCart(cart.filter((product) => product.id !== id));
+    setCart(cart.filter((Item) => Item.id !== id));
 
   const addProduct = (item, quantity) => {
     if (isInCart(item.id)) {
       setCart(
-        cart.map((product) => {
-          return product.id === item.id
-            ? { ...product, quantity: product.quantity }
-            : product;
+        cart.map((Item) => {
+          return Item.id === Item.id
+            ? { ...Item, quantity: Item.quantity }
+            : Item;
         })
       );
     } else {
-      setCart([...cart, { ...item, quantity }]);
+      setCart([...cart, { ...Item, quantity }]);
     }
   };
 
