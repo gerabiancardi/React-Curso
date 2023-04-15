@@ -10,7 +10,7 @@ function Cart() {
     return (
       <>
         <p>No hay elementos en el carrito</p>
-        <NavLink to="/">Hacer compra</NavLink>
+        <NavLink to="/"><button>Hacer Compra</button></NavLink>
       </>
     );
   }
